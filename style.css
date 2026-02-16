@@ -5,7 +5,7 @@
 
 .banner-image {
     width: 100%;
-    height: 600px;
+    height: 620px;
     display: block;
 }
 
@@ -28,3 +28,10 @@
     z-index: 2;
     color: white;
 }
+
+
+/* Choose us */
+/* .Choose-us{
+    display: flex;
+    
+} */
