@@ -22,7 +22,7 @@ const displayCategories = (products) => {
   const allCategory = products.map((product) => product.category);
   const uniqueCategories = [...new Set(allCategory)];
 
-  // Optional: Add "All" button
+  // Add "All" button
   const allBtn = document.createElement("button");
   allBtn.className = "btn btn-primary rounded-full";
   allBtn.innerText = "All";
