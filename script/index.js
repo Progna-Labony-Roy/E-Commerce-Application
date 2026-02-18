@@ -5,6 +5,37 @@ const loadProducts = () => {
 };
 
 
+const loadProductDetail = async (id) => {
+  const url = `https://fakestoreapi.com/products/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayProductDetails(details);
+};
+
+const displayProductDetails = (product) => {
+  console.log(product);
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+<div class="card bg-base-100 lg:w-96 md:w-80 lg:h-[460px] md:h-[420px] shadow-sm">
+        <div class="card-body">
+            <p class="font-semibold mb-2">Product name:${product?.title}</p>
+            <p class="font-semibold mb-2">Description:${product?.description}</p>
+            <p class="font-semibold mb-2">Price:$${product?.price}</p>
+            </p>
+              <p class="font-semibold mb-2">Rating:${product?.rating?.rate}</p>
+
+          
+          <div class="card-actions justify-between">
+            <button class="btn btn-outline w-[48%]">Buy Now</button>
+            <button class="btn btn-primary w-[48%]">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    `;
+  document.getElementById("product_modal").showModal();
+};
+
+
 const displayProduct = (products) => {
   //   PRODUCTS
   //   1. get the container and empty
@@ -41,7 +72,7 @@ const threeProducts = products.slice(0,3);
             <p class="font-bold">$(${product?.price})</p>
           </div>
           <div class="card-actions justify-between">
-            <button class="btn btn-outline w-[48%]">Details</button>
+            <button onclick="loadProductDetail(${product?.id})" id="product-details-${product?.category}" class="btn btn-outline w-[48%]">Details</button>
             <button class="btn btn-primary w-[48%]">Add</button>
           </div>
         </div>
